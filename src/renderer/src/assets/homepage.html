@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel With Grim</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height:calc(100vh - 24px);
+            background-color: #252525;
+        }
+        img{
+            height: 25vh;
+        }
+        textarea{
+            resize: none;
+            border: none;
+            background-color: #0F0F0F;
+            max-width: 600px;
+            width: 75vw;
+
+            border-radius: 5px;
+            color: whitesmoke;
+            min-height: 5px;
+            
+            padding-top: 15px;
+            padding-left: 10px;
+            padding-right: 10px;
+            display: block;
+        
+            text-align: left;
+            
+        }
+        textarea::placeholder{
+            color: grey;
+        }
+        textarea:focus { 
+        outline: none !important;
+        border-color: #719ECE;
+        box-shadow: 0 0 10px #719ECE;
+    }
+        
+    </style>
+</head>
+<body>
+
+    <img src="./img/icon.png" alt="">
+    <textarea   type="text" placeholder="Travell..." id="search" ></textarea>
+    
+    <script>
+
+var input = document.getElementById("search");      
+
+
+input.addEventListener("keypress", function(event) {
+
+  if (event.key === "Enter") {
+
+    event.preventDefault();
+    var querry = document.getElementById("search").value
+    window.location.href = "https://www.google.com/search?q="+querry
+  }
+}); 
+
+
+
+const tx = document.getElementsByTagName("textarea");
+for (let i = 0; i < tx.length; i++) {
+  tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
+  tx[i].setAttribute("style", "max-height:" + (tx[i].scrollHeight) + "px");
+  tx[i].addEventListener("input", OnInput, false);
+}
+
+function OnInput() {
+  this.style.height = 'auto';
+  this.style.height = (this.scrollHeight) + "px";
+}
+    </script>
+</body>
+</html>
